@@ -1,0 +1,72 @@
+/*
+ * Chayns Editor Stylesheet
+ *
+ * Created by: Rico Herwig
+ * Note: This stylesheet is automatically included by the chaynsEditor.js
+ *
+ * 24.04.2015
+ */
+.ce-icon {
+    background: transparent;
+}
+
+.ce-icon:hover {
+    background: #DDD !important;
+}
+
+/*
+ * Toolbar button icons
+ */
+.icon-bold:before {
+    content: '\f032';
+}
+
+.icon-italic:before {
+    content: '\f033';
+}
+
+.icon-underline:before {
+    content: '\f0cd';
+}
+
+.icon-list-ul:before {
+    content: '\f0ca';
+}
+
+.icon-list-ol:before {
+    content: '\f0cb';
+}
+
+.icon-header-1:before {
+    content: '\f1dc';
+}
+
+.icon-header-2:before {
+    content: '\f1dc';
+}
+
+.icon-paragraph:before {
+    content: '\f1dd';
+}
+
+.icon-html:before {
+    content: '\f13b';
+}
+
+.icon-html-active {
+    background: #DDD !important;
+}
+
+.icon-anchor:before {
+    content: '\f13d';
+}
+
+.icon-save:before {
+    content: '\f00c';
+    color: green;
+}
+
+.icon-discard:before {
+    content: '\f00d';
+    color: red;
+}
