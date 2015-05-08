@@ -1,0 +1,30 @@
+# Node
+node_modules
+bower_components
+
+dist
+old
+coverage
+out
+test/chayns.js
+test/test.json
+
+# IDE
+.idea
+TODO
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+npm-debug.log
