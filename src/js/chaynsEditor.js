@@ -1,4 +1,4 @@
-var chaynsEditor = (function(window, document, undefined) {
+var chaynsEditor = (function(window, document, chayns, undefined) {
 
     'use strict';
 
@@ -32,10 +32,10 @@ var chaynsEditor = (function(window, document, undefined) {
      */
     function init(isInternal) {
         if (util.isChaynsEnvironment() && (isInternal || util.isAdmin())) {
-            document.head.appendChild(dom.createDomElement("link", {
+            document.head.appendChild(dom.createDomElement('link', {
                 href: '//chayns1.tobit.com/SlitteRessource/ChaynsEditor/css/chaynsEditor.css',
-                rel: "stylesheet",
-                type: "text/css" }, undefined));
+                rel: 'stylesheet',
+                type: 'text/css' }, undefined));
             $toolbar = dom.createToolbar();
             initAttachHandler();
             document.addEventListener('mousedown', leaveHandler);
@@ -98,7 +98,7 @@ var chaynsEditor = (function(window, document, undefined) {
      */
     function changeHandler(e) {
         var el = (e.target || e.srcElement);
-        isChanged = (el.innerHTML.trim() != elBefore.content.trim());
+        isChanged = (el.innerHTML.trim() !== elBefore.content.trim());
         document.querySelector('#save-button').style.display = (isChanged) ? 'inline-block' : 'none';
     }
 
@@ -110,10 +110,10 @@ var chaynsEditor = (function(window, document, undefined) {
      */
     function leaveHandler(e) {
         var el = (e.target || e.srcElement);
-        if ($attachedTo
-            && !el.isContentEditable
-            && !(el === $toolbar)
-            && !util.isChildOf($toolbar, el)
+        if ($attachedTo &&
+            !el.isContentEditable &&
+            el !== $toolbar &&
+            !util.isChildOf($toolbar, el)
         ) {
             if (isChanged) {
                 if (isHtmlView) {
@@ -283,9 +283,9 @@ var chaynsEditor = (function(window, document, undefined) {
             case 'CreateLink':
                 // TODO: Better solution?
                 // Chayns V3 Prompt?
-                var tar = prompt("Link-URL:");
+                var tar = window.prompt('Link-URL:');
                 if (tar !== null) {
-                    document.execCommand("CreateLink", false, tar);
+                    document.execCommand('CreateLink', false, tar);
                 }
                 break;
             default:
@@ -382,7 +382,7 @@ var chaynsEditor = (function(window, document, undefined) {
          */
         function getEditableParent(el) {
             var node = el;
-            while (node != null) {
+            while (node) {
                 if (node.tagName.toLowerCase() === 'body') {
                     return null;
                 }
@@ -471,10 +471,10 @@ var chaynsEditor = (function(window, document, undefined) {
                 { 'name': 'Kursiv', 'action': 'italic', 'faClass': 'italic', 'float': 'left' },
                 { 'name': 'Unterstrichen', 'action': 'underline', 'faClass': 'underline', 'float': 'left' },
                 { 'name': 'seperator' },
-                { 'name': 'Aufzählung', 'action': 'insertUnorderedList', 'faClass': 'list-ul', 'float': 'left' },
+                { 'name': 'Aufz?lung', 'action': 'insertUnorderedList', 'faClass': 'list-ul', 'float': 'left' },
                 { 'name': 'Nummerierung', 'action': 'insertOrderedList', 'faClass': 'list-ol', 'float': 'left' },
-                { 'name': 'Überschrift 1', 'action': 'h1', 'faClass': 'header-1', 'float': 'left' },
-                { 'name': 'Überschrift 2', 'action': 'h2', 'faClass': 'header-2', 'float': 'left' },
+                { 'name': '?erschrift 1', 'action': 'h1', 'faClass': 'header-1', 'float': 'left' },
+                { 'name': '?erschrift 2', 'action': 'h2', 'faClass': 'header-2', 'float': 'left' },
                 { 'name': 'Absatz', 'action': 'p', 'faClass': 'paragraph', 'float': 'left' },
                 { 'name': 'Hyperlink', 'action': 'CreateLink', 'faClass': 'anchor', 'float': 'left' },
                 { 'name': 'seperator' },
@@ -494,9 +494,10 @@ var chaynsEditor = (function(window, document, undefined) {
          */
         function createDomElement(type, attributes, innerHTML) {
             var DOMElement = document.createElement(type);
-            if (innerHTML)
-                DOMElement.innerHTML = innerHTML;
-            if (attributes && typeof attributes == "object") {
+            if (innerHTML) {
+              DOMElement.innerHTML = innerHTML;
+            }
+            if (attributes && typeof attributes === 'object') {
                 for (var key in attributes) {
                     DOMElement.setAttribute(key, attributes[key]);
                 }
@@ -585,4 +586,4 @@ var chaynsEditor = (function(window, document, undefined) {
         detachToolbar: detachToolbar
     };
 
-})(window, document);
+})(window, document, window.chayns);

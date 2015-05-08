@@ -1,7 +1,5 @@
 {
   "node": true,
-  "jquery": false,
-  "browserify": true,
   "browser": true,
   "esnext": true,
   "bitwise": true,
@@ -20,11 +18,7 @@
   "undef": true,
   "unused": true,
   "sub": true,
-  "evil" : false,
-  "supernew": false,
-  "strict": false,
-  "debug": false,
-  "laxcomma": false,
+  "strict": true,
   "globals" : {
   }
 }
