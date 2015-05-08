@@ -3,11 +3,6 @@ node_modules
 bower_components
 
 dist
-old
-coverage
-out
-test/chayns.js
-test/test.json
 
 # IDE
 .idea
